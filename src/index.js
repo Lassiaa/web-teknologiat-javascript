@@ -1,1 +1,1 @@
-console.log('Hello console!');
+console.log('This is my first webpack site!');
