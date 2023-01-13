@@ -1,82 +1,101 @@
-const coursesEn = ["Hamburger, cream sauce and poiled potates",
-                "Goan style fish curry and whole grain rice",
-                "Vegan Chili sin carne and whole grain rice",
-                "Broccoli puree soup, side salad with two napas",
-                "Lunch baguette with BBQ-turkey filling",
-                "Cheese / Chicken / Vege / Halloum burger and french fries"];
+// Customizable maximum question and limit value constants
+const limitMin = 1;
+const limitMax = 100;
+const maxQuessCount = 10;
 
-const coursesFi = ["Jauhelihapihvi, ruskeaa kermakastiketta ja keitettyä perunaa",
-                "Goalaista kalacurrya ja täysjyväriisiä",
-                "vegaani Chili sin carne ja täysjyväriisi",
-                "Parsakeittoa,lisäkesalaatti kahdella napaksella",
-                "Lunch baguette with BBQ-turkey filling",
-                "Juusto / Kana / Kasvis / Halloumi burgeri ja ranskalaiset"];
+let randomNumber = Math.floor(Math.random() * limitMax) + limitMin;
 
-let lang = 'fi';
-let activeMenu = coursesFi;
+const guesses = document.querySelector('.guesses');
+const lastResult = document.querySelector('.lastResult');
+const lowOrHi = document.querySelector('.lowOrHi');
 
-/**
- * Renders menu content to html page
- * @param {Array} menu - Array of dishes
- */
+// Show total stats here
+const stats = document.querySelector('.stats');
 
-const renderMenu = (menu) => {
-  const menuBox = document.querySelector('.restaurant1');
-  menuBox.innerHTML = '';
-  const list = document.createElement('ul');
+const guessSubmit = document.querySelector('.guessSubmit');
+const guessField = document.querySelector('.guessField');
 
-  for (const dish of menu) {
-    const li = document.createElement('li');
-    li.textContent = dish;
-    list.append(li);
-  };
-  menuBox.append.list;
-};
+let guessCount = 1;
+let resetButton;
 
-renderMenu(activeMenu);
+// Base values for timer
+let startTimer = 0;
+let stopTimer = 0;
+let totalTime = 0;
 
-/**
- * Sorts menu alphabetically
- * @param {Array} menu - Array of dishes
- * @param {String} order - 'asc' or 'desc'
- * @returns
- */
+checkGuess = () => {
+  const userGuess = Number(guessField.value);
+  if (guessCount === 1) {
 
-const sortMenu = (menu, order='asc') => {
-  menu.sort();
-  if (order === 'desc'){
-    menu.reverse();
-  };
-  return menu;
-};
+    // Timer start from first guess
+    startTimer = Date.now();
 
-/**
- * Change UI language
- * @param {String} language
- */
-
-const changeLanguage = (language) => {
-  if (language === 'fi') {
-    activeMenu = coursesFi;
-  } else if (language === 'en') {
-    activeMenu = coursesEn;
+    guesses.textContent = 'Previous guesses: ';
   }
-  lang = language;
-  renderMenu(activeMenu);
+  guesses.textContent += `${userGuess} `;
+
+  if (userGuess === randomNumber) {
+    lastResult.textContent = 'Congratulations! You got it right!';
+    lastResult.style.backgroundColor = 'green';
+    lowOrHi.textContent = '';
+    setGameOver();
+
+    // Show total number of guesses and the time spent when the answer is correct
+    stats.textContent = 'Total guesses: ' + guessCount + ' Total time: ' + totalTime + 's';
+
+  } else if (guessCount === maxQuessCount) {
+    lastResult.textContent = '!!!GAME OVER!!!';
+    lowOrHi.textContent = '';
+    setGameOver();
+  } else {
+    lastResult.textContent = 'Wrong!';
+    lastResult.style.backgroundColor = 'red';
+    if (userGuess < randomNumber) {
+      lowOrHi.textContent = 'Last guess was too low!';
+    } else if (userGuess > randomNumber) {
+      lowOrHi.textContent = 'Last guess was too high!';
+    }
+  }
+
+  guessCount++;
+  guessField.value = '';
+  guessField.focus();
 };
 
-/**
- * Returns a random dish from an array
- * @param {Array} menu - Array of dishes
- * @returns random dish item
- */
-const getRandomDish = (menu) => {
-  const randomIndex = Math.floor(Math.random() * menu.length);
-  return menu[randomIndex];
+guessSubmit.addEventListener('click', checkGuess);
+
+setGameOver = () => {
+  guessField.disabled = true;
+  guessSubmit.disabled = true;
+  resetButton = document.createElement('button');
+  resetButton.textContent = 'Start new game';
+  document.body.append(resetButton);
+  resetButton.addEventListener('click', resetGame);
+
+  //Timer stops when game ends
+  stopTimer = Date.now();
+
+  // Total time = stopping time - starting time
+  // Total time is converted from milliseconds to seconds by / 1000
+  totalTime = (stopTimer - startTimer) / 1000;
 };
 
+resetGame = () => {
+  guessCount = 1;
 
-const sortButton = document.querySelector('#sort-button');
-sortButton.addEventListener('click', () => {
-  renderMenu(sortMenu(activeMenu));
-});
+  const resetParas = document.querySelectorAll('.resultParas p');
+  for (const resetPara of resetParas) {
+    resetPara.textContent = '';
+  }
+
+  resetButton.parentNode.removeChild(resetButton);
+
+  guessField.disabled = false;
+  guessSubmit.disabled = false;
+  guessField.value = '';
+  guessField.focus();
+
+  lastResult.style.backgroundColor = 'white';
+
+  randomNumber = Math.floor(Math.random() * limitMax) + limitMin;
+};
