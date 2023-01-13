@@ -75,9 +75,8 @@ const getRandomDish = (menu) => {
   return menu[randomIndex];
 };
 
+
 const sortButton = document.querySelector('#sort-button');
 sortButton.addEventListener('click', () => {
   renderMenu(sortMenu(activeMenu));
 });
-
-// console.log(sortMenu(activeMenu));
