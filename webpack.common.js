@@ -19,7 +19,7 @@ module.exports = {
       },
     ]}),
     new HtmlWebpackPlugin({
-      title: 'WTMP Starter',
+      title: 'Week1-Task3',
       meta: {
         viewport: 'width=device-width, initial-scale=1.0'
       },

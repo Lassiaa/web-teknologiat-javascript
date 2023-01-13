@@ -122,8 +122,9 @@ a {
 .restaurant {
   border: 2px solid lightslategray;
   border-radius: 5px;
-  text-align: center;
+  text-align: left;
   width: 100%;
+  font-size: 16px;
 }
 
 .restaurant h3 {
