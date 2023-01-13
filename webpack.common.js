@@ -19,7 +19,7 @@ module.exports = {
       },
     ]}),
     new HtmlWebpackPlugin({
-      title: 'Week1-Task3',
+      title: 'Week1-Task4',
       meta: {
         viewport: 'width=device-width, initial-scale=1.0'
       },
