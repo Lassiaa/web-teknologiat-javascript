@@ -1,5 +1,5 @@
 html {
-  font-family: sans-serif;
+  font-family: 'Times New Roman', Times, serif;
 }
 
 body {
@@ -7,13 +7,47 @@ body {
   max-width: 800px;
   min-width: 480px;
   margin: 0 auto;
+  display: flex;
+  flex-direction: column;
 }
 
 .form input[type="number"] {
   width: 200px;
 }
 
+button {
+  background-color: whitesmoke;
+  border: 1px solid black;
+  border-radius: 3px;
+  padding: 10px;
+  font-family: 'Courier New', Courier, monospace;
+
+}
+
 .lastResult {
   color: white;
   padding: 3px;
+}
+
+h1 {
+  font-family: 'Courier New', Courier, monospace;
+  text-align: center;
+}
+
+.resultParas {
+  border-bottom: 1px solid black;
+}
+
+.lastResult {
+  border-radius: 5px;
+  padding: 5px 5px 5px 10px;
+}
+
+.lowOrhi {
+  font-weight: bold;
+}
+
+.reset {
+  margin-top: 16px;
+  align-self: center;
 }
