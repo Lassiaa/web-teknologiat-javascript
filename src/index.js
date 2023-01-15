@@ -1,21 +1,12 @@
 import LunchMenu from './menu.json';
 
-// let allData = JSON.parse(LunchMenu);
-// console.log(allData["1"]);
+let coursesFi = new Array();
+let coursesEn = new Array();
 
-// let allCourses = new Array();
-// console.log(allCourses);
-
-// loadDishes = () => {
-//   $.getJSON(LunchMenu, data = () => {
-//     allCourses = data.courses;
-//   });
-// };
-
-// let coursesFi = new Array();
-// let coursesEn = new Array();
-
-
+for (let i = 1; i < (Object.keys(LunchMenu.courses).length) +1; i++) {
+  coursesFi.push(LunchMenu.courses[i].title_fi);
+  coursesEn.push(LunchMenu.courses[i].title_en);
+}
 
 let lang = 'fi';
 let activeMenu = coursesFi;
