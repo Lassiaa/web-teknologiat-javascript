@@ -1,12 +1,4 @@
-import LunchMenu from './menu.json';
-
-let coursesFi = new Array();
-let coursesEn = new Array();
-
-for (let i = 1; i < (Object.keys(LunchMenu.courses).length) +1; i++) {
-  coursesFi.push(LunchMenu.courses[i].title_fi);
-  coursesEn.push(LunchMenu.courses[i].title_en);
-}
+import { coursesFi, coursesEn } from "./modules/sodexo-data";
 
 let lang = 'fi';
 let activeMenu = coursesFi;
@@ -71,13 +63,11 @@ const getRandomDish = (menu) => {
 
 const sortButton = document.querySelector('#sort-button');
 sortButton.addEventListener('click', () => {
-  console.log(menuOrder);
   if (menuOrder === 'asc') {
     menuOrder = 'desc';
   } else if (menuOrder === 'desc') {
     menuOrder = 'asc';
   }
-  console.log(menuOrder);
   renderMenu(sortMenu(activeMenu, menuOrder));
 });
 
