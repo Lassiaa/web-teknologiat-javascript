@@ -6,9 +6,43 @@
     <link rel="stylesheet" href="assets/styles.css">
   </head>
   <body>
-    <p>
-      Hello! Open the developer tools, please.<br />
-      Start by editing the files in <code>src/</code> folder.
-    </p>
+    <div class="layout">
+      <div class="section section1">
+          <div class="nav">
+              <a href="#">Etusivu</a>
+              <a href="#">Ruokalistat</a>
+              <a href="#">Ravintolat</a>
+              <a href="#">Yhteystiedot</a>
+          </div>
+          <div class="search">
+              <input type="search" placeholder="Etsi ravintolaa nimellä..." class="searchbar">
+          </div>
+      </div>
+      <div class="section section2">
+          <div class="slogan">
+              <h1>Lounari.</h1>
+              <h2>Missä tänään syötäisiin?</h2>
+          </div>
+      </div>
+      <div class="section section3">
+          <p>Missä tänään syötäisiin? Tuttu tarina ennen lounashetkeä. </p>
+          <p>Palvelu etsii lähelläsi olevat lounaspaikat, sekä näyttää niiden päivittäisen lounaslistan.</p>
+          <p>Viikottaiset lounaslistat ovat myös käytettävissäsi. Pääset niihin klikkaamalla ravintolan logoa.</p>
+      </div>
+      <div class="section section4">
+          <div class="restaurants">
+              <div class="restaurant restaurant1">
+
+              </div>
+              <div class="add">
+                  <a>Lisää ravintola</a>
+              </div>
+          </div>
+          <p id="random-display"></p>
+          <button id="sort-button">Sort</button>
+          <button id="lang-button">Language</button>
+          <button id="random-button">Random</button>
+      </div>
+  </div>
   </body>
 </html>

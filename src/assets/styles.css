@@ -1,3 +1,145 @@
 body {
-  margin: 10%;
+  background-attachment: fixed;
+  margin: 0;
+  font-size: 18px;
+  font-family: 'Nunito', sans-serif;
+}
+
+a {
+  text-decoration: none;
+}
+
+.layout {
+  display: grid;
+  grid-template-rows: 60px 200px 200px auto 60px;
+  grid-template-areas:
+      "navbar"
+      "header"
+      "info"
+      "restaurant-list"
+      "footer";
+}
+
+.section {
+  /* border: 1px dashed red; */
+  text-align: center;
+}
+
+.section1 {
+  height: 60px;
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+}
+
+.nav {
+  display: flex;
+  flex-grow: 2;
+  padding-left: 5%;
+}
+
+.nav a {
+  margin: 10px;
+  color: #AC6665;
+}
+
+.nav a:hover {
+  transition: .4s;
+  color: #603a39;
+}
+
+.search {
+  height: 100%;
+  flex-grow: 1;
+  align-self: flex-end;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.searchbar {
+  padding: 5px 0px 5px 15px;
+  border: 1px solid #AC6665;
+  border-radius: 3px;
+  margin-right: 10px;
+}
+
+.section2 {
+  display: flex;
+  background-image: url(lounari.jpg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+.slogan {
+  color: white;
+  background-color: #90EF90;
+  width: 50%;
+  height: 100%;
+  clip-path: polygon(0% 0%, 75% 0%, 100% 100%, 0% 100%);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: baseline;
+  padding-left: 10%;
+}
+
+.slogan h1 {
+  margin: 0;
+  font-size: 55px;
+  letter-spacing: 5px;
+  font-family: 'Times New Roman', Times, serif;
+}
+
+.slogan h2 {
+  margin: 0;
+  font-size: 25px;
+  font-weight: normal;
+  font-family: 'Times New Roman', Times, serif;
+}
+
+.section3 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.section3 p {
+  margin: 0;
+  font-family: 'Nunito', sans-serif;
+}
+
+.restaurants {
+  margin: 0 10% 0 10%;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+  grid-template-rows: minmax(150px, max-content) repeat(auto-fill, 150px);
+  gap: 30px;
+  justify-items: center;
+}
+
+.restaurant {
+  border: 2px solid lightslategray;
+  border-radius: 5px;
+  text-align: left;
+  width: 100%;
+  font-size: 16px;
+}
+
+.restaurant h3 {
+  font-size: 18px;
+  margin: 0;
+}
+
+.add {
+  border: 2px dashed lightgrey;
+  border-radius: 5px;
+  text-align: start;
+  width: 100%;
+}
+
+.add a {
+  color: lightgray;
+  margin: 10px;
 }
